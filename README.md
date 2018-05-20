@@ -11,7 +11,7 @@ This program use the pygame module for play sounds
 Implementation of the validation of the input in the 'entryTime' in the 'Config Time Window', accepting only numbers in the format ‘00.00’.
 
 # Potuguese 
-# Pomodoro Timmer
+# Pomodoro Timer
 Um simples temporizador feito em Python 3.
 
 # Uso
