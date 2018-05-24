@@ -22,14 +22,14 @@ class Relogio(object):
         self.opcoes_menusom = Menu(self.barraMenu, tearoff=0)
         self.menuOpcoes.add_cascade(label='Alarms',  menu=self.opcoes_menusom)
 
-        self.opcoesAlarmes = {'1. Firestation Bell': 'sons/firestation_bell.wav',
-                           '2. Burglar Bell': 'sons/burglar_bell.wav'}
+        self.opcoesAlarmes = {'1. Firestation Bell': 'sounds/firestation_bell.wav',
+                           '2. Burglar Bell': 'sounds/burglar_bell.wav'}
 
         self.alarme = StringVar()
         self.alarme.set('1. Firestation Bell')
 
         for k in sorted(self.opcoesAlarmes):
-            self.opcoes_menusom.add_radiobutton(label=k, variable=self.alarme, command=self.som)
+            self.opcoes_menusom.add_radiobutton(label=k, variable=self.alarme, command=self.sound)
 
         self.barraMenu.add_cascade(label='Options', menu=self.menuOpcoes)
 
@@ -42,8 +42,8 @@ class Relogio(object):
         self.frame_show()
 
     def alteraTempo(self):
-        self.initTempoPomodoro = self.entry_var.get()
-        self.labelClock['text'] = ("%.2f" % self.initTempoPomodoro)
+        self.initTimePomodoro = self.entry_var.get()
+        self.labelClock['text'] = ("%.2f" % self.initTimePomodoro)
         self.toplevel.destroy()
 
     def telaConfigTempo(self):
@@ -61,7 +61,7 @@ class Relogio(object):
         self.labelInfo = Label(toplevelInfo, text='Simple pomodoro timer')
         self.labelInfo.grid()
 
-    def som(self):
+    def sound(self):
         self.som_nome = self.alarme.get()
         self.som_escolhido = self.opcoesAlarmes.get(self.som_nome)
 
