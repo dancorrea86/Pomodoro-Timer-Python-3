@@ -17,7 +17,7 @@ class Relogio(object):
         self.menuOpcoes = Menu(self.barraMenu, tearoff=0)
 
         self.menuConfigTempo = Menu(self.barraMenu, tearoff=0)
-        self.menuOpcoes.add_command(label='Config. time', accelerator='Ctrl+t', compound=LEFT, command=self.telaConfigTempo)
+        self.menuOpcoes.add_command(label='Config. time', accelerator='Ctrl+t', compound=LEFT, command=self.configTimeWindow)
 
         self.opcoes_menusom = Menu(self.barraMenu, tearoff=0)
         self.menuOpcoes.add_cascade(label='Alarms',  menu=self.opcoes_menusom)
@@ -41,18 +41,18 @@ class Relogio(object):
 
         self.frame_show()
 
-    def alteraTempo(self):
+    def configTime(self):
         self.initTimePomodoro = self.entry_var.get()
         self.labelClock['text'] = ("%.2f" % self.initTimePomodoro)
         self.toplevel.destroy()
 
-    def telaConfigTempo(self):
+    def configTimeWindow(self):
         self.toplevel = Toplevel(self.master)
         self.entry_var = DoubleVar()
         self.entryTime = Entry(self.toplevel, textvariable=self.entry_var)
         self.entryTime.grid()
 
-        self.btnSetTime = Button(self.toplevel, text='Ok', command=self.alteraTempo)
+        self.btnSetTime = Button(self.toplevel, text='Ok', command=self.configTime)
         self.btnSetTime.grid()
 
     def telaInfo(self):
